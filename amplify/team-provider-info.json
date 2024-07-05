@@ -27,7 +27,7 @@
       "function": {
         "contactHandlerFunction2": {
           "deploymentBucketName": "amplify-energymeal2-dev-5e7a7-deployment",
-          "s3Key": "amplify-builds/contactHandlerFunction2-483869524a5541676443-build.zip"
+          "s3Key": "amplify-builds/contactHandlerFunction2-6a73516d596756326259-build.zip"
         }
       }
     }
