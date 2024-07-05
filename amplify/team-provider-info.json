@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-energymeal2-dev-5e7a7-authRole",
+      "UnauthRoleArn": "arn:aws:iam::471112674552:role/amplify-energymeal2-dev-5e7a7-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::471112674552:role/amplify-energymeal2-dev-5e7a7-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-energymeal2-dev-5e7a7-deployment",
+      "UnauthRoleName": "amplify-energymeal2-dev-5e7a7-unauthRole",
+      "StackName": "amplify-energymeal2-dev-5e7a7",
+      "StackId": "arn:aws:cloudformation:us-east-1:471112674552:stack/amplify-energymeal2-dev-5e7a7/6476b840-3a88-11ef-a74d-12f1bada1e7d",
+      "AmplifyAppId": "d2bmr11kuh7jns"
+    },
+    "categories": {
+      "api": {
+        "energymeal2": {}
+      }
+    }
+  }
+}
