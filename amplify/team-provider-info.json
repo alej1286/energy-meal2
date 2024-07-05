@@ -13,7 +13,22 @@
     },
     "categories": {
       "api": {
-        "energymeal2": {}
+        "energymeal2": {},
+        "contactFormApi2": {}
+      },
+      "auth": {
+        "energymeal2Authentication": {
+          "googleClientId": "1043601713237-dsj7mtir5hvfch24niue0ab66mlf83i7.apps.googleusercontent.com"
+        }
+      },
+      "storage": {
+        "s3energymeal2storage5c8f340e": {}
+      },
+      "function": {
+        "contactHandlerFunction2": {
+          "deploymentBucketName": "amplify-energymeal2-dev-5e7a7-deployment",
+          "s3Key": "amplify-builds/contactHandlerFunction2-483869524a5541676443-build.zip"
+        }
       }
     }
   }

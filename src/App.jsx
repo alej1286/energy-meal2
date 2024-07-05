@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { View } from "@aws-amplify/ui-react";
 import { useState } from 'react'
@@ -7,6 +8,12 @@ import './App.css'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
+import { Login } from './components/Login';
+import Home from './components/Home';
+import Gallery from './components/Gallery';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import About from './components/About';
+import Contact from './components/Contact';
 
 function App({ signOut, user }) {
   useEffect(() => {
@@ -24,19 +31,19 @@ function App({ signOut, user }) {
   return (
     <View className="App bg-gray-200 min-h-screen">
       <Router>
-        {/* <Navbar /> */}
         <Navbar />
-        {/* <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/instagram" element={<Instagram />} />
-          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-          <Route path="/contact" element={<Contact />} />
+        <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/authe" element={<Authe />} />
-        </Routes> */}
+          <Route exact path="/" element={<Home />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* 
+          <Route path="/services" element={<Services />} />
+          <Route path="/instagram" element={<Instagram />} />
+          <Route path="/authe" element={<Authe />} /> */}
+        </Routes>
       {/* <Carousel businessKey={"ChIJQw1FN----------------"} apiKey={"AIzaSy-----------------------------------------"}/> */}
         
         <div className="elfsight-app-4495d092-b640-4aa1-88ec-ab5fb0a2961a" data-elfsight-app-lazy></div>

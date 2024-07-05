@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3energymeal2storage5c8f340e",
+  "bucketName": "energymeal2-storage-5c8f340e",
+  "policyUUID": "443138da",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

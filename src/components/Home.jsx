@@ -34,7 +34,7 @@ function Home() {
               <div className="mt-5 md:mt-0 md:col-span-1">
                 <div className="shadow overflow-hidden sm:rounded-md">
                   <img
-                    src="https://energymeal-storage-8bfb8df432927-dev.s3.amazonaws.com/public/dish1.jpeg"
+                    src="https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish1.jpeg"
                     alt=""
                     className="h-48 w-full object-cover"
                   />
@@ -52,7 +52,7 @@ function Home() {
               <div className="mt-5 md:mt-0 md:col-span-1">
                 <div className="shadow overflow-hidden sm:rounded-md">
                   <img
-                    src="https://energymeal-storage-8bfb8df432927-dev.s3.amazonaws.com/public/dish2.jpeg"
+                    src="https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish2.jpeg"
                     alt=""
                     className="h-48 w-full object-cover"
                   />
@@ -72,7 +72,7 @@ function Home() {
               <div className="mt-5 md:mt-0 md:col-span-1">
                 <div className="shadow overflow-hidden sm:rounded-md">
                   <img
-                    src="https://energymeal-storage-8bfb8df432927-dev.s3.amazonaws.com/public/dish3.jpeg"
+                    src="https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish3.jpeg"
                     alt=""
                     className="h-48 w-full object-cover"
                   />
@@ -90,7 +90,7 @@ function Home() {
               <div className="mt-5 md:mt-0 md:col-span-1">
                 <div className="shadow overflow-hidden sm:rounded-md">
                   <img
-                    src="https://energymeal-storage-8bfb8df432927-dev.s3.amazonaws.com/public/dish4.jpeg"
+                    src="https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish4.jpeg"
                     alt=""
                     className="h-48 w-full object-cover"
                   />
@@ -124,7 +124,7 @@ function Home() {
             <div className="mt-5 md:mt-0 md:col-span-1">
               <div className="shadow overflow-hidden sm:rounded-md">
                 <img
-                  src="https://energymeal-storage-8bfb8df432927-dev.s3.amazonaws.com/public/dish5.jpeg"
+                  src="https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish5.jpeg"
                   alt=""
                   className="h-48 w-full object-cover"
                 />
@@ -142,7 +142,7 @@ function Home() {
             <div className="mt-5 md:mt-0 md:col-span-1">
               <div className="shadow overflow-hidden sm:rounded-md">
                 <img
-                  src="https://energymeal-storage-8bfb8df432927-dev.s3.amazonaws.com/public/dish6.jpeg"
+                  src="https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish6.jpeg"
                   alt=""
                   className="h-48 w-full object-cover"
                 />
@@ -162,7 +162,7 @@ function Home() {
             <div className="mt-5 md:mt-0 md:col-span-1">
               <div className="shadow overflow-hidden sm:rounded-md">
                 <img
-                  src="https://energymeal-storage-8bfb8df432927-dev.s3.amazonaws.com/public/dish7.jpeg"
+                  src="https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish7.jpeg"
                   alt=""
                   className="h-48 w-full object-cover"
                 />
@@ -180,7 +180,7 @@ function Home() {
             <div className="mt-5 md:mt-0 md:col-span-1">
               <div className="shadow overflow-hidden sm:rounded-md">
                 <img
-                  src="https://energymeal-storage-8bfb8df432927-dev.s3.amazonaws.com/public/dish8.jpeg"
+                  src="https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish8.jpeg"
                   alt=""
                   className="h-48 w-full object-cover"
                 />

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -27,10 +28,52 @@ function Navbar(props) {
   const navigate = useNavigate();
   let models = null;
 
+
+  function sortNavigationArray(navArray) {
+    // Find the index of the 'Home' element
+    const homeIndex = navArray.findIndex(item => item.name === 'Home');
+    // If 'Home' is not found, return the original array
+    if (homeIndex === -1) {
+      return navArray;
+    }
+    // Remove 'Home' from its current position
+    const homeElement = navArray.splice(homeIndex, 1)[0];
+    // Insert 'Home' at the beginning of the array
+    navArray.unshift(homeElement);
+    return navArray;
+  }
+  
+
   async function fetchData() {
     models = await DataStore.query(Navigation);
-    setNavigation(models);
+    setNavigation(sortNavigationArray(models));
     console.log(models);
+  }
+
+
+  useEffect(() => {
+    //console.log("route:",route)
+    const checkUser = async() => {
+        fetchAuthSession().then((session)=>{
+          setRol(session.tokens.accessToken.payload["cognito:groups"]);
+          /* if (rol.includes("admin")) {
+            console.log("rol include admin: ",rol)
+          } */
+        })
+        /* const user2 = await fetchUserAttributes();
+        console.log("user2:",user2) */
+      }
+      if(route === 'authenticated'){
+        checkUser()
+      }
+  }, [route]);
+
+  function logOut() {
+    signOut();
+    setRol([]);
+    console.log("setRol([]) called, rol=;",rol);
+    navigate("/login");
+
   }
 
 useEffect( ()=>{
