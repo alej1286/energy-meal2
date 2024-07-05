@@ -13,7 +13,7 @@ exports.handler = async (event) => {
     const {name, email,message} = JSON.parse(event.body)
     await sendEmail({
         from:"admin@energymeal.us",
-        to:"alej1286@gmail.com",
+        to:"rauldiazmirabal3@gmail.com",
         client: sesClient,
         subject:`Message from "${name}"`,
         body: `Email: ${email}\nmessage: ${message}`
