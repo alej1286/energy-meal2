@@ -18,7 +18,6 @@ import { v4 as uuidv4 } from "uuid";
 const Services = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
-  const [updateNote, setUpdateNote] = useState();
   const { rol } = useRolReposStore();
 
   const [isEditingService, setIsEditingService] = useState(false);
@@ -28,6 +27,7 @@ const Services = () => {
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
   const [key, setKey] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const reinitializeStorageManager = () => {
     setKey((prevKey) => prevKey + 1);
@@ -173,7 +173,47 @@ const Services = () => {
           </Button>
         )}
 
-        <ServiceCardCollection />
+        <ServiceCardCollection
+          isPaginated
+          itemsPerPage={6}
+          overrideItems={({ item }) => {
+            return {
+              overrides: {
+                imageFrame: {
+                  children: (
+                    <Flex
+                      gap="10px"
+                      direction="column"
+                      width="unset"
+                      height="unset"
+                      justifyContent="center"
+                      alignItems="center"
+                      shrink="0"
+                      position="relative"
+                      padding="0px 0px 0px 0px"
+                      children={
+                        <StorageImage
+                          alt={item.imagePath}
+                          path={`public/${item.imagePath}`}
+                        />
+                      }
+                    />
+                  ),
+                },
+                "Frame 418": {
+                  display: rol.includes("admin") ? "flex" : "none",
+                },
+                EditButton: {
+                  onClick: () => {
+                    setIsEditingService(true);
+                    setServiceToUpdate(item);
+                    setRefreshKey((oldKey) => oldKey + 1);
+                  },
+                },
+              },
+            };
+          }}
+        />
       </div>
 
       <div
