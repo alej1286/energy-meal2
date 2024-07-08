@@ -82,7 +82,7 @@ useEffect( ()=>{
 
 
   return (
-    <Disclosure as="nav" className="bg-gray-800/60 backdrop-blur-md shadow-md"
+    <Disclosure as="nav" className="bg-gray-800/60 backdrop-blur-md shadow-md mb-5"
     /* className="text-5xl fixed top-0 inset-x-0 text-center bg-gray-800/50" */ 
     >
       {({ open }) => (

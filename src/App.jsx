@@ -14,6 +14,7 @@ import Gallery from './components/Gallery';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import About from './components/About';
 import Contact from './components/Contact';
+import Services from './components/Services';
 
 function App({ signOut, user }) {
   useEffect(() => {
@@ -39,8 +40,8 @@ function App({ signOut, user }) {
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          {/* 
           <Route path="/services" element={<Services />} />
+          {/* 
           <Route path="/instagram" element={<Instagram />} />
           <Route path="/authe" element={<Authe />} /> */}
         </Routes>
