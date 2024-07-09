@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import {
@@ -14,10 +15,11 @@ import { Button, Card, Flex } from "@aws-amplify/ui-react";
 import { useRolReposStore } from "./../store/RolRepo";
 import { getProperties } from "aws-amplify/storage";
 import { v4 as uuidv4 } from "uuid";
+import awsconfig from "../aws-exports";
+import { Hub } from "aws-amplify/utils";
 
 const Services = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [showUpdateModal, setShowUpdateModal] = useState(false);
   const { rol } = useRolReposStore();
 
   const [isEditingService, setIsEditingService] = useState(false);
@@ -29,9 +31,30 @@ const Services = () => {
   const [key, setKey] = useState(0);
   const [refreshKey, setRefreshKey] = useState(0);
 
+  Hub.listen("ui", (capsule) => {
+    if (capsule.payload.event === "actions:datastore:update:finished") {
+      setIsEditingService(false);
+      setServiceToUpdate(null);
+      setRefreshKey((oldKey) => oldKey + 2);
+    }
+  });
+
   const reinitializeStorageManager = () => {
     setKey((prevKey) => prevKey + 1);
   };
+  const handleUploadSuccess = (event) => {
+    const { key } = event;
+    const s3Path = `https://${awsconfig.aws_user_files_s3_bucket}.s3.amazonaws.com/${key}`;
+    console.log("Full S3 Path:", s3Path);
+    if (isEditingService) {
+      updatedService(s3Path);
+    }
+
+    if (isAddingService) {
+      setImagePath(s3Path);
+    }
+  };
+
   const onSuccess = async ({ file, key }) => {
     console.log(`Key: ${key}`);
     let src;
@@ -98,8 +121,6 @@ const Services = () => {
                   backgroundColor={inDropZone ? "primary.10" : ""}
                   {...rest}
                 >
-                  {/* <Text>Drop files here</Text>
-                  <Divider size="small" label="or" maxWidth="10rem" /> */}
                   {children}
                 </Flex>
               );
@@ -115,7 +136,8 @@ const Services = () => {
               return <></>;
             },
           }}
-          onUploadSuccess={onSuccess}
+          //onUploadSuccess={onSuccess}
+          onUploadSuccess={handleUploadSuccess}
         />
       ),
     },
@@ -133,8 +155,6 @@ const Services = () => {
     },
     SaveButton: {
       onClick: async (e) => {
-        //console.log("imagePath: ", imagePath, "price:", price, "type: ", type);
-        //console.log("files:", files);
         console.log("e:", e);
         const newService = await DataStore.save(
           new Service({
@@ -152,6 +172,60 @@ const Services = () => {
       },
     },
     AddService: {
+      width: "400px",
+      height: "600px",
+    },
+  };
+
+  const editServiceOverrides = {
+    Icon: {
+      onClick: () => {
+        setIsEditingService(false);
+      },
+    },
+    UploadNewImage: {
+      children: (
+        <StorageManager
+          key={key}
+          acceptedFileTypes={["image/*"]}
+          path="public/"
+          isResumable
+          maxFileCount={1}
+          processFile={processFile}
+          components={{
+            Container({ children }) {
+              return <Card variation="elevated">{children}</Card>;
+            },
+            DropZone({ children, displayText, inDropZone, ...rest }) {
+              return (
+                <Flex
+                  alignItems="center"
+                  direction="column"
+                  padding="medium"
+                  backgroundColor={inDropZone ? "primary.10" : ""}
+                  {...rest}
+                >
+                  {children}
+                </Flex>
+              );
+            },
+            FilePicker({ onClick }) {
+              return (
+                <Button variation="primary" onClick={onClick}>
+                  Browse Files
+                </Button>
+              );
+            },
+            FileList({ files, onCancelUpload, onDeleteUpload }) {
+              return <></>;
+            },
+          }}
+          //onUploadSuccess={onSuccess}
+          onUploadSuccess={handleUploadSuccess}
+        />
+      ),
+    },
+    EditService: {
       width: "400px",
       height: "600px",
     },
@@ -222,8 +296,15 @@ const Services = () => {
       >
         <AddService overrides={addServiceOverrides} />
       </div>
-      <div className="modal" style={{ display: "none" }}>
-        {/* <EditService /> */}
+      <div
+        className="modal"
+        style={{ display: isEditingService === false && "none" }}
+      >
+        <EditService
+          overrides={editServiceOverrides}
+          key={refreshKey}
+          service={serviceToUpdate}
+        />
       </div>
     </>
   );

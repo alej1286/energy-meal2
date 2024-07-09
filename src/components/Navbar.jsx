@@ -47,7 +47,7 @@ function Navbar(props) {
   async function fetchData() {
     models = await DataStore.query(Navigation);
     setNavigation(sortNavigationArray(models));
-    console.log(models);
+    //console.log(models);
   }
 
 
@@ -71,7 +71,7 @@ function Navbar(props) {
   function logOut() {
     signOut();
     setRol([]);
-    console.log("setRol([]) called, rol=;",rol);
+    //console.log("setRol([]) called, rol=;",rol);
     navigate("/login");
 
   }

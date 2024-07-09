@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
+import { Service } from "../models";
 import {
   getOverrideProps,
   useDataStoreUpdateAction,
@@ -24,7 +25,7 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 export default function EditService(props) {
-  const { Service, service, overrides, ...rest } = props;
+  const { service, overrides, ...rest } = props;
   const [typeTextFieldValue, setTypeTextFieldValue] =
     useStateMutationAction("");
   const [priceTextFieldValue, setPriceTextFieldValue] =

@@ -36,7 +36,6 @@ export declare type EditServiceOverridesProps = {
     SaveButton?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type EditServiceProps = React.PropsWithChildren<Partial<FlexProps> & {
-    Service?: String;
     service?: Service;
 } & {
     overrides?: EditServiceOverridesProps | undefined | null;

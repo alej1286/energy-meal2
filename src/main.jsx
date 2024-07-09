@@ -1,10 +1,10 @@
 import React from 'react'
+import './index.css'
+import "@aws-amplify/ui-react/styles.css";
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
 import { Amplify } from 'aws-amplify';
 import { ThemeProvider , Authenticator } from "@aws-amplify/ui-react";
-import "@aws-amplify/ui-react/styles.css";
 
 
 import config from "./aws-exports";

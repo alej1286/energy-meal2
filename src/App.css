@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 /* Add to the end of /src/index.css */
+
+
+
 .modal {
   position: absolute;
   background-color: white;
