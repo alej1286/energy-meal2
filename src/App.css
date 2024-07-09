@@ -4,7 +4,12 @@
 
 /* Add to the end of /src/index.css */
 
-
+img,
+video,
+canvas,
+div {
+  overflow: clip !important;
+}
 
 .modal {
   position: absolute;
@@ -15,7 +20,7 @@
   left: 0;
   right: 0;
   top: 100px;
-  border: .5px solid gray;
+  border: 0.5px solid gray;
 }
 
 .container {

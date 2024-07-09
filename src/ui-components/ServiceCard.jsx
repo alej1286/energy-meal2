@@ -25,6 +25,7 @@ export default function ServiceCard(props) {
       height="381px"
       justifyContent="center"
       alignItems="center"
+      overflow="hidden"
       position="relative"
       boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
       padding="24px 24px 24px 24px"
@@ -35,14 +36,12 @@ export default function ServiceCard(props) {
       <Flex
         gap="24px"
         direction="column"
-        width="unset"
-        height="unset"
+        width="182px"
+        height="357px"
         justifyContent="space-between"
         alignItems="center"
-        grow="1"
-        shrink="1"
-        basis="0"
-        alignSelf="stretch"
+        overflow="hidden"
+        shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "Frame 14452251")}
@@ -50,12 +49,12 @@ export default function ServiceCard(props) {
         <Flex
           gap="10px"
           direction="column"
-          width="unset"
-          height="unset"
-          justifyContent="flex-start"
+          width="182px"
+          height="160px"
+          justifyContent="center"
           alignItems="center"
+          overflow="hidden"
           shrink="0"
-          alignSelf="stretch"
           position="relative"
           padding="0px 0px 0px 0px"
           {...getOverrideProps(overrides, "imageFrame")}
@@ -82,6 +81,7 @@ export default function ServiceCard(props) {
           height="unset"
           justifyContent="flex-start"
           alignItems="center"
+          overflow="hidden"
           grow="1"
           shrink="1"
           basis="0"
@@ -93,14 +93,12 @@ export default function ServiceCard(props) {
           <Flex
             gap="8px"
             direction="column"
-            width="unset"
-            height="unset"
+            width="182px"
+            height="166px"
             justifyContent="center"
             alignItems="center"
-            grow="1"
-            shrink="1"
-            basis="0"
-            alignSelf="stretch"
+            overflow="hidden"
+            shrink="0"
             position="relative"
             padding="0px 0px 0px 0px"
             {...getOverrideProps(overrides, "Name")}
@@ -153,12 +151,12 @@ export default function ServiceCard(props) {
         <Flex
           gap="24px"
           direction="row"
-          width="unset"
+          width="182px"
           height="31px"
           justifyContent="space-between"
           alignItems="flex-end"
+          overflow="hidden"
           shrink="0"
-          alignSelf="stretch"
           position="relative"
           padding="0px 0px 0px 0px"
           {...getOverrideProps(overrides, "Frame 418")}
@@ -166,6 +164,7 @@ export default function ServiceCard(props) {
           <Button
             width="69px"
             height="30px"
+            overflow="hidden"
             shrink="0"
             size="large"
             isDisabled={false}
@@ -176,6 +175,7 @@ export default function ServiceCard(props) {
           <Button
             width="69px"
             height="30px"
+            overflow="hidden"
             shrink="0"
             size="large"
             isDisabled={false}

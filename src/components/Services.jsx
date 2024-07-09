@@ -39,6 +39,18 @@ const Services = () => {
     }
   });
 
+  Hub.listen("ui", (capsule) => {
+    if (capsule.payload.event === "actions:datastore:delete:started") {
+      console.log(capsule.payload.data.id);
+    }
+  });
+
+  Hub.listen("ui", (capsule) => {
+    if (capsule.payload.event === "actions:datastore:delete:finished") {
+      console.log(capsule);
+    }
+  });
+
   const reinitializeStorageManager = () => {
     setKey((prevKey) => prevKey + 1);
   };
@@ -233,7 +245,7 @@ const Services = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container overflow-hidden">
         {rol.includes("admin") && (
           <Button
             variation="primary"
