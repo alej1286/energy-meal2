@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { Service } from "../models";
-import { ButtonProps, FlexProps, ImageProps, TextProps } from "@aws-amplify/ui-react";
+import { ButtonProps, FlexProps, IconProps, ImageProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -26,6 +26,8 @@ export declare type ServiceCardOverridesProps = {
     "Frame 14451250"?: PrimitiveOverrideProps<FlexProps>;
     Name?: PrimitiveOverrideProps<FlexProps>;
     Type?: PrimitiveOverrideProps<TextProps>;
+    "Frame 419"?: PrimitiveOverrideProps<FlexProps>;
+    Vector?: PrimitiveOverrideProps<IconProps>;
     Price?: PrimitiveOverrideProps<TextProps>;
     "Frame 418"?: PrimitiveOverrideProps<FlexProps>;
     EditButton?: PrimitiveOverrideProps<ButtonProps>;
