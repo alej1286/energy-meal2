@@ -4,13 +4,6 @@
 
 /* Add to the end of /src/index.css */
 
-img,
-video,
-canvas,
-div {
-  overflow: clip !important;
-}
-
 .modal {
   position: absolute;
   background-color: white;

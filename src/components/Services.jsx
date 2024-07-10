@@ -5,18 +5,17 @@ import {
   AddService,
   EditService,
   ServiceCardCollection,
-  ServiceCard,
 } from "../ui-components";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StorageManager, StorageImage } from "@aws-amplify/ui-react-storage";
-import { DataStore, syncExpression } from "aws-amplify/datastore";
+import { DataStore } from "aws-amplify/datastore";
 import { Service } from "../models";
 import { Button, Card, Flex } from "@aws-amplify/ui-react";
 import { useRolReposStore } from "./../store/RolRepo";
-import { getProperties } from "aws-amplify/storage";
 import { v4 as uuidv4 } from "uuid";
 import awsconfig from "../aws-exports";
 import { Hub } from "aws-amplify/utils";
+import { remove } from "aws-amplify/storage";
 
 const Services = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -26,6 +25,7 @@ const Services = () => {
   const [serviceToUpdate, setServiceToUpdate] = useState(null);
   const [isAddingService, setIsAddingService] = useState(true);
   const [imagePath, setImagePath] = useState("");
+  const [imagePathtoDelete, setImagePathToDelete] = useState("");
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
   const [key, setKey] = useState(0);
@@ -39,15 +39,21 @@ const Services = () => {
     }
   });
 
-  Hub.listen("ui", (capsule) => {
+  Hub.listen("ui", async (capsule) => {
     if (capsule.payload.event === "actions:datastore:delete:started") {
-      console.log(capsule.payload.data.id);
+      const model = await DataStore.query(Service, capsule.payload.data.id);
+      const fileName = model.imagePath.split("/").pop();
+      try {
+        await remove({ key: fileName });
+      } catch (error) {
+        console.log("Error ", error);
+      }
     }
   });
 
   Hub.listen("ui", (capsule) => {
     if (capsule.payload.event === "actions:datastore:delete:finished") {
-      console.log(capsule);
+      // console.log(capsule);
     }
   });
 
@@ -65,27 +71,6 @@ const Services = () => {
     if (isAddingService) {
       setImagePath(s3Path);
     }
-  };
-
-  const onSuccess = async ({ file, key }) => {
-    console.log(`Key: ${key}`);
-    let src;
-    const imageSrc = await getProperties({ path: key }).then((result) => {
-      if (isEditingService) {
-        updatedService(key);
-      }
-
-      if (isAddingService) {
-        setImagePath(
-          "https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/" +
-            key
-        );
-      }
-      src = result;
-    });
-    /*     console.log("imageSrc:", imageSrc);
-    console.log("src:", src);
-    console.log("file: ", file); */
   };
 
   const updatedService = async (imagePath) => {
@@ -245,7 +230,7 @@ const Services = () => {
 
   return (
     <>
-      <div className="container overflow-hidden">
+      <div className="container">
         {rol.includes("admin") && (
           <Button
             variation="primary"
@@ -258,48 +243,50 @@ const Services = () => {
             Add service
           </Button>
         )}
-
-        <ServiceCardCollection
-          isPaginated
-          itemsPerPage={6}
-          overrideItems={({ item }) => {
-            return {
-              overrides: {
-                imageFrame: {
-                  children: (
-                    <Flex
-                      gap="10px"
-                      direction="column"
-                      width="unset"
-                      height="unset"
-                      justifyContent="center"
-                      alignItems="center"
-                      shrink="0"
-                      position="relative"
-                      padding="0px 0px 0px 0px"
-                      children={
-                        <StorageImage
-                          alt={item.imagePath}
-                          path={`public/${item.imagePath}`}
-                        />
-                      }
-                    />
-                  ),
-                },
-                "Frame 418": {
-                  display: rol.includes("admin") ? "flex" : "none",
-                },
-                EditButton: {
-                  onClick: () => {
-                    setIsEditingService(true);
-                    setServiceToUpdate(item);
-                    setRefreshKey((oldKey) => oldKey + 1);
+        <Flex overflow={"auto"}>
+          <ServiceCardCollection
+            overflow={"auto"}
+            isPaginated
+            itemsPerPage={6}
+            overrideItems={({ item }) => {
+              return {
+                overrides: {
+                  imageFrame: {
+                    children: (
+                      <Flex
+                        gap="10px"
+                        direction="column"
+                        width="unset"
+                        height="unset"
+                        justifyContent="center"
+                        alignItems="center"
+                        shrink="0"
+                        position="relative"
+                        padding="0px 0px 0px 0px"
+                        children={
+                          <StorageImage
+                            alt={item.imagePath}
+                            path={`public/${item.imagePath}`}
+                          />
+                        }
+                      />
+                    ),
+                  },
+                  "Frame 418": {
+                    display: rol.includes("admin") ? "flex" : "none",
+                  },
+                  EditButton: {
+                    onClick: () => {
+                      setIsEditingService(true);
+                      setServiceToUpdate(item);
+                      setRefreshKey((oldKey) => oldKey + 1);
+                    },
                   },
                 },
-              },
-            };
-          }}
-        />
+              };
+            }}
+          />
+        </Flex>
       </div>
 
       <div
