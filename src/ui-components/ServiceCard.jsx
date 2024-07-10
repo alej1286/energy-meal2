@@ -186,7 +186,7 @@ export default function ServiceCard(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 whiteSpace="pre-wrap"
-                children="100"
+                children={service?.price}
                 {...getOverrideProps(overrides, "Price")}
               ></Text>
             </Flex>
