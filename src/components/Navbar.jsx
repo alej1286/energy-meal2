@@ -1,25 +1,29 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { Disclosure } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Disclosure } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NavLink } from "react-router-dom";
-import { useState } from 'react';
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from 'react';
-import { useRolReposStore } from './../store/RolRepo';
-import { fetchAuthSession } from 'aws-amplify/auth';
-import { DataStore } from 'aws-amplify/datastore';
-import { Navigation } from '../models';
+import { useEffect } from "react";
+import { useRolReposStore } from "./../store/RolRepo";
+import { fetchAuthSession } from "aws-amplify/auth";
+import { DataStore } from "aws-amplify/datastore";
+import { Navigation } from "../models";
 import { Authenticator, useAuthenticator } from "@aws-amplify/ui-react";
 
-const classNameFunc = ({ isActive }) => (isActive ? ' no-underline bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium' : 'no-underline text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium');
+const classNameFunc = ({ isActive }) =>
+  isActive
+    ? " no-underline bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+    : "no-underline text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium";
 
-const classNameFuncSmall = ({ isActive }) => (isActive ? 'no-underline bg-gray-900 text-white rounded-md px-5 py-1 text-sm font-medium' : 'no-underline text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium:bg-gray-700');
-
-
+const classNameFuncSmall = ({ isActive }) =>
+  isActive
+    ? "no-underline bg-gray-900 text-white rounded-md px-5 py-1 text-sm font-medium"
+    : "no-underline text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium:bg-gray-700";
 
 function Navbar(props) {
-  const [nav, setNavigation] = useState([])
+  const [nav, setNavigation] = useState([]);
   const { rol, setRol } = useRolReposStore();
   const { route, signOut } = useAuthenticator((context) => [
     context.route,
@@ -27,11 +31,11 @@ function Navbar(props) {
   ]);
   const navigate = useNavigate();
   let models = null;
-
+  const [refreshKey, setRefreshKey] = useState(0);
 
   function sortNavigationArray(navArray) {
     // Find the index of the 'Home' element
-    const homeIndex = navArray.findIndex(item => item.name === 'Home');
+    const homeIndex = navArray.findIndex((item) => item.name === "Home");
     // If 'Home' is not found, return the original array
     if (homeIndex === -1) {
       return navArray;
@@ -42,7 +46,6 @@ function Navbar(props) {
     navArray.unshift(homeElement);
     return navArray;
   }
-  
 
   async function fetchData() {
     models = await DataStore.query(Navigation);
@@ -50,22 +53,21 @@ function Navbar(props) {
     //console.log(models);
   }
 
-
   useEffect(() => {
     //console.log("route:",route)
-    const checkUser = async() => {
-        fetchAuthSession().then((session)=>{
-          setRol(session.tokens.accessToken.payload["cognito:groups"]);
-          /* if (rol.includes("admin")) {
+    const checkUser = async () => {
+      fetchAuthSession().then((session) => {
+        setRol(session.tokens.accessToken.payload["cognito:groups"]);
+        /* if (rol.includes("admin")) {
             console.log("rol include admin: ",rol)
           } */
-        })
-        /* const user2 = await fetchUserAttributes();
+      });
+      /* const user2 = await fetchUserAttributes();
         console.log("user2:",user2) */
-      }
-      if(route === 'authenticated'){
-        checkUser()
-      }
+    };
+    if (route === "authenticated") {
+      checkUser();
+    }
   }, [route]);
 
   function logOut() {
@@ -73,17 +75,19 @@ function Navbar(props) {
     setRol([]);
     //console.log("setRol([]) called, rol=;",rol);
     navigate("/login");
-
   }
 
-useEffect( ()=>{
-  fetchData();
-  },[models])
-
+  useEffect(() => {
+    fetchData();
+    setRefreshKey((oldKey) => oldKey + 1);
+  }, [models]);
 
   return (
-    <Disclosure as="nav" className="bg-gray-800/60 backdrop-blur-md shadow-md mb-5"
-    /* className="text-5xl fixed top-0 inset-x-0 text-center bg-gray-800/50" */ 
+    <Disclosure
+      key={refreshKey}
+      as="nav"
+      className="bg-gray-800/60 backdrop-blur-md shadow-md mb-5"
+      /* className="text-5xl fixed top-0 inset-x-0 text-center bg-gray-800/50" */
     >
       {({ open }) => (
         <>
@@ -111,8 +115,9 @@ useEffect( ()=>{
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {nav?.map((item) => (
-                      
-                      <NavLink to={item.href} key={item.name}
+                      <NavLink
+                        to={item.href}
+                        key={item.name}
                         className={classNameFunc}
                         /* aria-current={item.current ? 'page' : undefined} */
                       >
@@ -123,16 +128,25 @@ useEffect( ()=>{
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              {/* {route !== 'authenticated' ? ( */}
-              {rol.length === 0 ? (
-          <button className='no-underline text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium' onClick={() => navigate('/login')}>Login</button>
-        ) : (
-          <button className='no-underline text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium' onClick={() => logOut()}>Logout</button>
-        )}
-                
-               
+                {/* {route !== 'authenticated' ? ( */}
+                {rol.length === 0 ? (
+                  <button
+                    className="no-underline text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    onClick={() => navigate("/login")}
+                  >
+                    Login
+                  </button>
+                ) : (
+                  <button
+                    className="no-underline text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                    onClick={() => logOut()}
+                  >
+                    Logout
+                  </button>
+                )}
+
                 {/* Profile dropdown */}
-               {/*  <Menu as="div" className="relative ml-3">
+                {/*  <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
@@ -193,15 +207,14 @@ useEffect( ()=>{
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {nav?.map((item) => (
-               
-                <NavLink to={item.href} key={item.name}
-                className={classNameFuncSmall}
-               
-              >
-                {item.name}
-              </NavLink>
+                <NavLink
+                  to={item.href}
+                  key={item.name}
+                  className={classNameFuncSmall}
+                >
+                  {item.name}
+                </NavLink>
               ))}
-              
             </div>
           </Disclosure.Panel>
         </>

@@ -5,10 +5,14 @@
  **************************************************************************/
 
 export { default as AddService } from "./AddService";
+export { default as Delete } from "./Delete";
+export { default as Edit } from "./Edit";
 export { default as EditService } from "./EditService";
 export { default as NavigationCreateForm } from "./NavigationCreateForm";
 export { default as NavigationUpdateForm } from "./NavigationUpdateForm";
 export { default as ServiceCard } from "./ServiceCard";
+export { default as ServiceCard2 } from "./ServiceCard2";
+export { default as ServiceCard2Collection } from "./ServiceCard2Collection";
 export { default as ServiceCardCollection } from "./ServiceCardCollection";
 export { default as ServiceCreateForm } from "./ServiceCreateForm";
 export { default as ServiceUpdateForm } from "./ServiceUpdateForm";

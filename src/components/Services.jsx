@@ -4,6 +4,7 @@
 import {
   AddService,
   EditService,
+  ServiceCard2Collection,
   ServiceCardCollection,
 } from "../ui-components";
 import React, { useState } from "react";
@@ -244,8 +245,8 @@ const Services = () => {
           </Button>
         )}
         <Flex overflow={"auto"}>
-          <ServiceCardCollection
-            overflow={"auto"}
+          <ServiceCard2Collection
+            /* overflow={"auto"} */
             isPaginated
             itemsPerPage={6}
             overrideItems={({ item }) => {
@@ -272,10 +273,10 @@ const Services = () => {
                       />
                     ),
                   },
-                  "Frame 418": {
+                  "Frame Button Row": {
                     display: rol.includes("admin") ? "flex" : "none",
                   },
-                  EditButton: {
+                  Edit: {
                     onClick: () => {
                       setIsEditingService(true);
                       setServiceToUpdate(item);
