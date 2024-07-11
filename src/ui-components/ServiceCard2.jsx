@@ -6,20 +6,37 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Service } from "../models";
 import {
   getOverrideProps,
   getOverridesFromVariants,
   mergeVariantsAndOverrides,
-  useDataStoreDeleteAction,
 } from "./utils";
 import { Flex, Image, Text, useBreakpointValue } from "@aws-amplify/ui-react";
-import { schema } from "../models/schema";
 import Edit from "./Edit";
 import Delete from "./Delete";
 export default function ServiceCard2(props) {
   const { service, overrides: overridesProp, ...restProp } = props;
   const variants = [
+    {
+      overrides: {
+        Image: { width: "125px", height: "125px", shrink: "0" },
+        Title: {},
+        $: {},
+        Price: {},
+        "Frame Content Price": {},
+        "Frame Metadata": { gap: "16px" },
+        "Frame Cont Row": {},
+        Edit: {},
+        "Frame Edit": {},
+        Delete: {},
+        "Frame delete": {},
+        "Frame Button Row": { gap: "1px" },
+        "Frame Right Col": { height: "115px" },
+        FrameHorParent: { justifyContent: "flex-start" },
+        ServiceCard2: { width: "319px" },
+      },
+      variantValues: { breakpoint: "small" },
+    },
     {
       overrides: {
         Image: {},
@@ -38,31 +55,31 @@ export default function ServiceCard2(props) {
         FrameHorParent: {},
         ServiceCard2: {},
       },
-      variantValues: { breakpoint: "small" },
+      variantValues: { breakpoint: "base" },
     },
     {
       overrides: {
-        Image: { width: "180px", height: "180px" },
+        Image: { width: "180px", height: "180px", shrink: "0" },
         Title: {},
         $: {},
         Price: {},
         "Frame Content Price": {},
-        "Frame Metadata": { height: "85px" },
+        "Frame Metadata": { gap: "16px", height: "85px" },
         "Frame Cont Row": {},
         Edit: { width: "95px", height: "40px" },
         "Frame Edit": { width: "unset" },
         Delete: { width: "95px", height: "40px" },
         "Frame delete": { width: "unset" },
-        "Frame Button Row": { alignItems: "flex-end" },
+        "Frame Button Row": { gap: "25px", alignItems: "flex-end" },
         "Frame Right Col": { height: "151px" },
-        FrameHorParent: {},
+        FrameHorParent: { justifyContent: "flex-start" },
         ServiceCard2: { width: "768px" },
       },
       variantValues: { breakpoint: "medium" },
     },
   ];
   const breakpointHook = useBreakpointValue({
-    base: "small",
+    base: "base",
     small: "small",
     medium: "medium",
   });
@@ -74,16 +91,11 @@ export default function ServiceCard2(props) {
     }),
     overridesProp || {}
   );
-  const framedeleteOnClick = useDataStoreDeleteAction({
-    id: service?.id,
-    model: Service,
-    schema: schema,
-  });
   return (
     <Flex
       gap="10px"
       direction="column"
-      width="358px"
+      width="230px"
       height="unset"
       justifyContent="flex-start"
       alignItems="flex-start"
@@ -101,7 +113,7 @@ export default function ServiceCard2(props) {
         direction="row"
         width="unset"
         height="unset"
-        justifyContent="flex-start"
+        justifyContent="center"
         alignItems="center"
         shrink="0"
         alignSelf="stretch"
@@ -111,13 +123,15 @@ export default function ServiceCard2(props) {
         {...getOverrideProps(overrides, "FrameHorParent")}
       >
         <Image
-          width="125px"
-          height="125px"
+          width="unset"
+          height="115px"
           display="block"
           gap="unset"
           alignItems="unset"
           justifyContent="unset"
-          shrink="0"
+          grow="1"
+          shrink="1"
+          basis="0"
           position="relative"
           boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
           borderRadius="8px"
@@ -130,7 +144,7 @@ export default function ServiceCard2(props) {
           gap="4px"
           direction="column"
           width="unset"
-          height="115px"
+          height="100px"
           justifyContent="space-between"
           alignItems="center"
           grow="1"
@@ -158,7 +172,7 @@ export default function ServiceCard2(props) {
             {...getOverrideProps(overrides, "Frame Cont Row")}
           >
             <Flex
-              gap="16px"
+              gap="6px"
               direction="column"
               width="unset"
               height="68px"
@@ -256,7 +270,7 @@ export default function ServiceCard2(props) {
             </Flex>
           </Flex>
           <Flex
-            gap="25px"
+            gap="19px"
             direction="row"
             width="unset"
             height="unset"
@@ -274,7 +288,7 @@ export default function ServiceCard2(props) {
             <Flex
               gap="10px"
               direction="column"
-              width="80px"
+              width="70px"
               height="unset"
               justifyContent="flex-start"
               alignItems="flex-start"
@@ -288,13 +302,12 @@ export default function ServiceCard2(props) {
                 display="flex"
                 gap="0"
                 direction="row"
-                width="unset"
+                width="70px"
                 height="26px"
                 justifyContent="flex-start"
                 alignItems="flex-start"
                 overflow="hidden"
                 shrink="0"
-                alignSelf="stretch"
                 position="relative"
                 borderRadius="10px"
                 padding="0px 0px 0px 0px"
@@ -304,7 +317,7 @@ export default function ServiceCard2(props) {
             <Flex
               gap="10px"
               direction="column"
-              width="80px"
+              width="70px"
               height="unset"
               justifyContent="flex-start"
               alignItems="flex-start"
@@ -312,22 +325,18 @@ export default function ServiceCard2(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               display="flex"
-              onClick={() => {
-                framedeleteOnClick();
-              }}
               {...getOverrideProps(overrides, "Frame delete")}
             >
               <Delete
                 display="flex"
                 gap="0"
                 direction="row"
-                width="unset"
+                width="70px"
                 height="26px"
                 justifyContent="flex-start"
                 alignItems="flex-start"
                 overflow="hidden"
                 shrink="0"
-                alignSelf="stretch"
                 position="relative"
                 borderRadius="10px"
                 padding="0px 0px 0px 0px"

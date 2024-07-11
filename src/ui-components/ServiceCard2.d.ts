@@ -40,7 +40,7 @@ export declare type ServiceCard2OverridesProps = {
 export declare type ServiceCard2Props = React.PropsWithChildren<Partial<FlexProps> & {
     service?: Service;
 } & {
-    breakpoint?: "medium" | "small";
+    breakpoint?: "base" | "medium" | "small";
 } & {
     overrides?: ServiceCard2OverridesProps | undefined | null;
 }>;

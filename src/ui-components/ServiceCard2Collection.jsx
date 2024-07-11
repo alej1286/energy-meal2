@@ -30,8 +30,8 @@ export default function ServiceCard2Collection(props) {
       isSearchable="true"
       isPaginated={true}
       searchPlaceholder="Search..."
-      templateColumns="1fr 1fr"
-      autoFlow="row"
+      templateRows="1fr 1fr"
+      autoFlow="column"
       alignItems="stretch"
       justifyContent="stretch"
       items={items || []}
