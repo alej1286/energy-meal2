@@ -230,8 +230,8 @@ const Services = () => {
   };
 
   return (
-    <>
-      <div className="container">
+    <div className="flex flex-col justify-center items-center w-full">
+      <div className="flex flex-col justify-start items-start w-4/5">
         {rol.includes("admin") && (
           <Button
             variation="primary"
@@ -244,51 +244,57 @@ const Services = () => {
             Add service
           </Button>
         )}
-        <Flex overflow={"auto"}>
-          <ServiceCard2Collection
-            /* overflow={"auto"} */
-            isPaginated
-            itemsPerPage={6}
-            overrideItems={({ item }) => {
-              return {
-                overrides: {
-                  imageFrame: {
-                    children: (
-                      <Flex
-                        gap="10px"
-                        direction="column"
-                        width="unset"
-                        height="unset"
-                        justifyContent="center"
-                        alignItems="center"
-                        shrink="0"
-                        position="relative"
-                        padding="0px 0px 0px 0px"
-                        children={
-                          <StorageImage
-                            alt={item.imagePath}
-                            path={`public/${item.imagePath}`}
-                          />
-                        }
-                      />
-                    ),
-                  },
-                  "Frame Button Row": {
-                    display: rol.includes("admin") ? "flex" : "none",
-                  },
-                  Edit: {
-                    onClick: () => {
-                      setIsEditingService(true);
-                      setServiceToUpdate(item);
-                      setRefreshKey((oldKey) => oldKey + 1);
-                    },
+      </div>
+
+      <Flex className="flex flex-col justify-center items-center w-full">
+        <ServiceCard2Collection
+          type="list"
+          direction="row"
+          gap="1px"
+          wrap="wrap"
+          className="flex flex-col justify-center items-center w-full"
+          /* overflow={"auto"} */
+          isPaginated
+          itemsPerPage={6}
+          overrideItems={({ item }) => {
+            return {
+              overrides: {
+                imageFrame: {
+                  children: (
+                    <Flex
+                      gap="10px"
+                      direction="column"
+                      width="unset"
+                      height="unset"
+                      justifyContent="center"
+                      alignItems="center"
+                      shrink="0"
+                      position="relative"
+                      padding="0px 0px 0px 0px"
+                      children={
+                        <StorageImage
+                          alt={item.imagePath}
+                          path={`public/${item.imagePath}`}
+                        />
+                      }
+                    />
+                  ),
+                },
+                "Frame Button Row": {
+                  display: rol.includes("admin") ? "flex" : "none",
+                },
+                Edit: {
+                  onClick: () => {
+                    setIsEditingService(true);
+                    setServiceToUpdate(item);
+                    setRefreshKey((oldKey) => oldKey + 1);
                   },
                 },
-              };
-            }}
-          />
-        </Flex>
-      </div>
+              },
+            };
+          }}
+        />
+      </Flex>
 
       <div
         className="modal"
@@ -306,7 +312,7 @@ const Services = () => {
           service={serviceToUpdate}
         />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -42,7 +42,7 @@ export default function ServiceCard2Collection(props) {
         <ServiceCard2
           service={item}
           height="auto"
-          width="358px"
+          width="450px"
           margin="1rem 1rem 1rem 1rem"
           key={item.id}
           {...(overrideItems && overrideItems({ item, index }))}
