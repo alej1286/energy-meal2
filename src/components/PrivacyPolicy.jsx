@@ -1,10 +1,22 @@
 import { Disclosure } from "@headlessui/react";
 //import { ChevronUpIcon } from '@heroicons/react/solid';
 import { Bars3Icon } from "@heroicons/react/24/outline";
+import { Helmet } from "react-helmet";
 
 function PrivacyPolicy() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Helmet>
+        <title>Pricing and Policies | Energy Meal</title>
+        <meta
+          name="description"
+          content="Discover our pricing and policies at Energy Meal. We offer affordable meal plans and training programs to help you achieve your health goals. Start your journey with Energy Meal today!"
+        />
+        <meta
+          name="keywords"
+          content="pricing, policies, Energy Meal, healthy meals, diet meals, organic meals, vegan meals, gluten-free meals, personal training, weight loss advice"
+        />
+      </Helmet>
       <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
           <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">

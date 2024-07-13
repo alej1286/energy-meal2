@@ -1,10 +1,21 @@
 /* eslint-disable no-unused-vars */
-import { getProperties } from 'aws-amplify/storage';
+import { getProperties } from "aws-amplify/storage";
+import { Helmet } from "react-helmet";
 
 function Home() {
-
   return (
     <div className="bg-gray-100 mt-24">
+      <Helmet>
+        <title>Healthy Meals & Personal Training | Energy Meal</title>
+        <meta
+          name="description"
+          content="At Energy Meal, we offer nutritious and delicious meals, personalized training programs, and expert advice to help you start your healthy lifestyle. Start your journey with Energy Meal today!"
+        />
+        <meta
+          name="keywords"
+          content="healthy meals, diet meals, organic meals, vegan meals, gluten-free meals, personal training, weight loss advice"
+        />
+      </Helmet>
       <div className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
@@ -15,7 +26,11 @@ function Home() {
               We Make Lorem ipsum, dolor sit amet consectetur adipisicing
             </p>
             <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut consequatur possimus quam cupiditate quod quo magnam ea minima libero fugiat amet harum, vero, officia facere voluptatem deleniti accusamus dolores maxime repudiandae sit consequuntur ab laboriosam. Itaque quod reprehenderit autem aliquam?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
+              consequatur possimus quam cupiditate quod quo magnam ea minima
+              libero fugiat amet harum, vero, officia facere voluptatem deleniti
+              accusamus dolores maxime repudiandae sit consequuntur ab
+              laboriosam. Itaque quod reprehenderit autem aliquam?
             </p>
           </div>
         </div>
@@ -40,10 +55,13 @@ function Home() {
                   />
                   <div className="px-4 py-5 sm:p-6">
                     <h3 className="text-lg leading-6 font-medium text-gray-900">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, molestiae?
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Odio, molestiae?
                     </h3>
                     <p className="mt-2 max-w-2xl text-sm text-gray-500">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt aperiam sunt explicabo quas labore quod quo. Labore illo sit at!
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Nesciunt aperiam sunt explicabo quas labore quod quo.
+                      Labore illo sit at!
                     </p>
                   </div>
                 </div>
@@ -61,7 +79,10 @@ function Home() {
                       Lorem ipsum dolor sit amet consectetur.
                     </h3>
                     <p className="mt-2 max-w-2xl text-sm text-gray-500">
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, facilis suscipit! Atque incidunt molestiae quas necessitatibus ipsum cum culpa ex odio eveniet nihil, iure illum praesentium modi laboriosam dicta obcaecati.
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Quas, facilis suscipit! Atque incidunt molestiae quas
+                      necessitatibus ipsum cum culpa ex odio eveniet nihil, iure
+                      illum praesentium modi laboriosam dicta obcaecati.
                     </p>
                   </div>
                 </div>
@@ -81,7 +102,8 @@ function Home() {
                       Lorem ipsum dolor sit amet consectetur.
                     </h3>
                     <p className="mt-2 max-w-2xl text-sm text-gray-500">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, maxime.
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Minima, maxime.
                     </p>
                   </div>
                 </div>
@@ -99,7 +121,8 @@ function Home() {
                       Lorem ipsum dolor sit amet consectetur.
                     </h3>
                     <p className="mt-2 max-w-2xl text-sm text-gray-500">
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima aperiam cumque obcaecati aliquam nemo a?
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Minima aperiam cumque obcaecati aliquam nemo a?
                     </p>
                   </div>
                 </div>
@@ -133,7 +156,9 @@ function Home() {
                     Lorem, ipsum.
                   </h3>
                   <p className="mt-2 max-w-2xl text-sm text-gray-500">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam temporibus officia nemo provident dicta! Obcaecati neque corrupti illum recusandae. Pariatur!
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Magnam temporibus officia nemo provident dicta! Obcaecati
+                    neque corrupti illum recusandae. Pariatur!
                   </p>
                 </div>
               </div>
@@ -151,7 +176,8 @@ function Home() {
                     Lorem, ipsum.
                   </h3>
                   <p className="mt-2 max-w-2xl text-sm text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, sed.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptate, sed.
                   </p>
                 </div>
               </div>
@@ -171,7 +197,8 @@ function Home() {
                     Lorem, ipsum.
                   </h3>
                   <p className="mt-2 max-w-2xl text-sm text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, quis.
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Ut, quis.
                   </p>
                 </div>
               </div>
@@ -189,7 +216,9 @@ function Home() {
                     Lorem, ipsum.
                   </h3>
                   <p className="mt-2 max-w-2xl text-sm text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, cum numquam? Temporibus non cumque ducimus suscipit recusandae, nostrum placeat fugit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Sapiente, cum numquam? Temporibus non cumque ducimus
+                    suscipit recusandae, nostrum placeat fugit.
                   </p>
                 </div>
               </div>
@@ -205,13 +234,15 @@ function Home() {
               Book Your Appointment Today
             </p>
             <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-              Contact us to schedule your appointment for Lorem ipsum dolor sit amet.
+              Contact us to schedule your appointment for Lorem ipsum dolor sit
+              amet.
             </p>
             <div className="mt-6">
               <a
                 href="#"
                 target="_blank"
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700" rel="noreferrer"
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                rel="noreferrer"
               >
                 Book Now
               </a>

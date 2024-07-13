@@ -2,18 +2,10 @@
 import awsconfig from "../aws-exports";
 import { useState, useEffect } from "react";
 import { list } from "aws-amplify/storage";
+import { Helmet } from "react-helmet";
 
 function Gallery() {
-  const [images, setImages] = useState([
-    "https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish1.jpeg",
-    "https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish2.jpeg",
-    "https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish3.jpeg",
-    "https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish4.jpeg",
-    "https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish5.jpeg",
-    "https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish6.jpeg",
-    "https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish7.jpeg",
-    "https://energymeal2-storage-5c8f340e5e7a7-dev.s3.amazonaws.com/public/dish8.jpeg",
-  ]);
+  const [images, setImages] = useState([]);
 
   async function checkGallery() {
     try {
@@ -38,6 +30,17 @@ function Gallery() {
 
   return (
     <div className="container mt-24 mx-auto px-5 py-2 lg:px-32 lg:pt-24 flex-col">
+      <Helmet>
+        <title>Gallery | Energy Meal</title>
+        <meta
+          name="description"
+          content="Explore our gallery at Energy Meal to see our delicious meals and training sessions in action. Start your journey to a healthier lifestyle today!"
+        />
+        <meta
+          name="keywords"
+          content="gallery, Energy Meal, healthy meals, diet meals, organic meals, vegan meals, gluten-free meals, personal training, weight loss advice"
+        />
+      </Helmet>
       <div className="-m-1 flex flex-wrap md:-m-2">
         <div className="justify-center">
           <h1 className="text-xl font-semibold mb-5 flex-col">

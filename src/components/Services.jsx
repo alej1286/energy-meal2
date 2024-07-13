@@ -17,6 +17,7 @@ import { v4 as uuidv4 } from "uuid";
 import awsconfig from "../aws-exports";
 import { Hub } from "aws-amplify/utils";
 import { remove } from "aws-amplify/storage";
+import { Helmet } from "react-helmet";
 
 const Services = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -231,6 +232,17 @@ const Services = () => {
 
   return (
     <div className="flex flex-col justify-center items-center w-full">
+      <Helmet>
+        <title>Our Services | Energy Meal</title>
+        <meta
+          name="description"
+          content="Discover our range of services at Energy Meal. From healthy meals to personalized training programs and expert advice, we have everything you need to start your journey to a healthier lifestyle today!"
+        />
+        <meta
+          name="keywords"
+          content="services, Energy Meal, healthy meals, diet meals, organic meals, vegan meals, gluten-free meals, personal training, weight loss advice"
+        />
+      </Helmet>
       <div className="flex flex-col justify-start items-start w-4/5">
         {rol.includes("admin") && (
           <Button

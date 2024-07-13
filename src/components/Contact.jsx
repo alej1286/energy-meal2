@@ -17,12 +17,12 @@ import {
   Message,
 } from "@aws-amplify/ui-react";
 import { BsTwitter, BsJournal, BsYoutube } from "react-icons/bs";
-//import { API } from "aws-amplify";
-import { generateClient  } from "aws-amplify/api";
+import { generateClient } from "aws-amplify/api";
 //import { createCandidate } from "../graphql/mutations";
 //import { InstagramEmbed } from 'react-social-media-embed';
-import { post } from '@aws-amplify/api';
-import { useState } from 'react';
+import { post } from "@aws-amplify/api";
+import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const IconEmail = () => {
   return (
@@ -36,44 +36,41 @@ function Contact({ signOut }) {
   const { tokens } = useTheme();
   const client = generateClient();
   const [showToast, setShowToast] = useState(false);
-  
-  
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
- const name = e.target[0].value;
- const email = e.target[1].value;
- const message = e.target[2].value;
+    const name = e.target[0].value;
+    const email = e.target[1].value;
+    const message = e.target[2].value;
 
     try {
       const restOperation = await post({
-        apiName:"contactFormApi2",
-        path:"/contact",
-        options:{
-          body:{name,email,message}
-        }
-      })
-      
-      
-   /*  const {body} = await restOperation.response;
+        apiName: "contactFormApi2",
+        path: "/contact",
+        options: {
+          body: { name, email, message },
+        },
+      });
+
+      /*  const {body} = await restOperation.response;
     const response = await body.json();
     console.log("POST call Succeeded");
     console.log(response); */
 
-    // Clear the form
-    e.target.reset();
-    
-    // Show the toast
-    setShowToast(true);
+      // Clear the form
+      e.target.reset();
 
-    // Hide the toast after 3 seconds
-    setTimeout(() => setShowToast(false), 3000);
+      // Show the toast
+      setShowToast(true);
+
+      // Hide the toast after 3 seconds
+      setTimeout(() => setShowToast(false), 3000);
     } catch (e) {
-
-    console.log("POST call failed: ",JSON.parse(e.response.body))  
+      console.log("POST call failed: ", JSON.parse(e.response.body));
     }
-    
-   /*  const name = e.target.name.value;
+
+    /*  const name = e.target.name.value;
     const email = e.target.email.value;
     const message = e.target.message.value;
 
@@ -91,7 +88,6 @@ function Contact({ signOut }) {
     }); */
   };
 
-
   return (
     <Flex
       justifyContent="center"
@@ -99,28 +95,41 @@ function Contact({ signOut }) {
       height="100vh"
       className="mt-24"
     >
-      
-     {showToast && 
+      <Helmet>
+        <title>Contact Us | Energy Meal</title>
+        <meta
+          name="description"
+          content="Get in touch with us at Energy Meal for personalized meal plans, training programs, and expert advice. Start your journey to a healthier lifestyle today!"
+        />
+        <meta
+          name="keywords"
+          content="contact, Energy Meal, healthy meals, diet meals, organic meals, vegan meals, gluten-free meals, personal training, weight loss advice"
+        />
+      </Helmet>
+
+      {showToast && (
         <Flex
-        position="fixed"
-        width="100vw"
-        top="56px"
-        justifyContent="center"
-        alignItems="flex-start"
-      >
-        <Message 
-          colorTheme="success"
-          heading="success"
-          overflow= "hidden"
-          margin= "0 0 6px"
-          style={{borderRadius:"6px 6px 6px 6px",padding: "10px 10px 10px 10px"}}
+          position="fixed"
+          width="100vw"
+          top="56px"
+          justifyContent="center"
+          alignItems="flex-start"
         >
-          Your message has been sent
-        </Message>
-      </Flex>
-      }
-      
-      
+          <Message
+            colorTheme="success"
+            heading="success"
+            overflow="hidden"
+            margin="0 0 6px"
+            style={{
+              borderRadius: "6px 6px 6px 6px",
+              padding: "10px 10px 10px 10px",
+            }}
+          >
+            Your message has been sent
+          </Message>
+        </Flex>
+      )}
+
       <Card
         padding={{ large: tokens.space.xxxl }}
         variation="elevated"
@@ -137,7 +146,7 @@ function Contact({ signOut }) {
           </Flex>
           <Flex direction={"column"} justifyContent="space-between">
             <View style={{ marginBottom: tokens.space.small }}>
-            {/* <h1 className="text-base text-indigo-600 font-semibold tracking-wide uppercase mb-5">
+              {/* <h1 className="text-base text-indigo-600 font-semibold tracking-wide uppercase mb-5">
             Contact Us
             </h1> */}
               <Heading color={tokens.colors.white} level={3}>
@@ -168,7 +177,7 @@ function Contact({ signOut }) {
               >
                 <IconEmail color={tokens.colors.blue[40]} />{" "}
                 <a href={"mailto:rauldiazmirabal3@gmail.com"}>
-                rauldiazmirabal3@gmail.com
+                  rauldiazmirabal3@gmail.com
                 </a>
               </Button>
               <Button
