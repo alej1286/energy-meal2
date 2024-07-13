@@ -13,6 +13,7 @@ import { Navigation } from "../models";
 import { Authenticator, useAuthenticator } from "@aws-amplify/ui-react";
 import awsconfig from "../aws-exports";
 import { list } from "aws-amplify/storage";
+import { Hub } from "aws-amplify/utils";
 
 const classNameFunc = ({ isActive }) =>
   isActive
@@ -36,6 +37,13 @@ function Navbar(props) {
   const navigate = useNavigate();
   let models = null;
   const [refreshKey, setRefreshKey] = useState(0);
+
+  Hub.listen("datastore", async (hubData) => {
+    const { event, data } = hubData.payload;
+    if (event === "ready") {
+      setRefreshKey((oldKey) => oldKey + 1);
+    }
+  });
 
   async function getLogo() {
     const prefix = "brand/apple.svg";
