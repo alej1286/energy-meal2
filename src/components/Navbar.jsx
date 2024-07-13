@@ -11,6 +11,8 @@ import { fetchAuthSession } from "aws-amplify/auth";
 import { DataStore } from "aws-amplify/datastore";
 import { Navigation } from "../models";
 import { Authenticator, useAuthenticator } from "@aws-amplify/ui-react";
+import awsconfig from "../aws-exports";
+import { list } from "aws-amplify/storage";
 
 const classNameFunc = ({ isActive }) =>
   isActive
@@ -25,6 +27,8 @@ const classNameFuncSmall = ({ isActive }) =>
 function Navbar(props) {
   const [nav, setNavigation] = useState([]);
   const { rol, setRol } = useRolReposStore();
+  const [logo, setLogo] = useState("");
+  const [text, setText] = useState("");
   const { route, signOut } = useAuthenticator((context) => [
     context.route,
     context.signOut,
@@ -32,6 +36,43 @@ function Navbar(props) {
   const navigate = useNavigate();
   let models = null;
   const [refreshKey, setRefreshKey] = useState(0);
+
+  async function getLogo() {
+    const prefix = "brand/apple.svg";
+    try {
+      const result = await list({
+        prefix,
+      });
+      let localLogo = `https://${awsconfig.aws_user_files_s3_bucket}.s3.amazonaws.com/public/${prefix}`;
+
+      setLogo(localLogo);
+      //console.log(localLogo);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getLogo();
+  }, [logo]);
+
+  async function getText() {
+    const prefix = "brand/text(5).svg";
+    try {
+      const result = await list({
+        prefix,
+      });
+      let localText = `https://${awsconfig.aws_user_files_s3_bucket}.s3.amazonaws.com/public/${prefix}`;
+
+      setText(localText);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getText();
+  }, [text]);
 
   function sortNavigationArray(navArray) {
     // Find the index of the 'Home' element
@@ -91,7 +132,7 @@ function Navbar(props) {
     >
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-8xl px-2 sm:px-6 lg:px-8 ">
             <div className="relative flex items-center justify-between h-14">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -104,13 +145,30 @@ function Navbar(props) {
                   )}
                 </Disclosure.Button>
               </div>
+              <div className="flex flex-shrink-0 items-center hidden sm:contents">
+                <img className="h-8 w-auto" src={logo} alt="Energy Meal" />
+                <div
+                  className="flex flex-col items-center text-[#00CCFD] font-bold drop-shadow-lg space-y-[-17px] font-SimulateMinds mx-1"
+                  style={{
+                    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                  }}
+                >
+                  <div className="text-2xl">Energy</div>
+                  <div className="text-3xl">Meals</div>
+                </div>
+              </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end">
-                <div className="flex flex-shrink-0 items-center">
-                  {/* <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  /> */}
+                <div className="flex flex-shrink-0 items-center sm:hidden contents ">
+                  <img className="h-8 w-auto" src={logo} alt="Energy Meal" />
+                  <div
+                    className="flex flex-col items-center text-[#00CCFD] font-bold drop-shadow-lg space-y-[-17px] font-SimulateMinds mx-1"
+                    style={{
+                      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+                    }}
+                  >
+                    <div className="text-2xl">Energy</div>
+                    <div className="text-3xl">Meals</div>
+                  </div>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">

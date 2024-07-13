@@ -4,6 +4,27 @@
 
 /* Add to the end of /src/index.css */
 
+@font-face {
+  font-family: "CinzelDecorativeBlack";
+  src: local("CinzelDecorative-Black");
+  src: url("./assets/fonts/CinzelDecorative-Black.ttf") format("truetype");
+}
+@font-face {
+  font-family: "CinzelDecorativeBold";
+  src: local("CinzelDecorative-Bold");
+  src: url("./assets/fonts/CinzelDecorative-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "CinzelDecorativeRegular";
+  src: local("CinzelDecorative-Regular");
+  src: url("./assets/fonts/CinzelDecorative-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "SimulateMinds";
+  src: local("Simulate Minds - Demo");
+  src: url("./assets/fonts/SimulateMinds-Demo.ttf") format("truetype");
+}
+
 .modal {
   position: absolute;
   background-color: white;
