@@ -37,7 +37,7 @@ function Gallery() {
           `https://${awsconfig.aws_user_files_s3_bucket}.s3.amazonaws.com/public/${element.key}`
       );
       setImages(arr2);
-      console.log(arr2);
+      //console.log(arr2);
     } catch (error) {
       console.log(error);
     }
@@ -87,7 +87,7 @@ function Gallery() {
       console.log("Error ", error);
     }
     setKey((prevKey) => prevKey + 1);
-    console.log(fileName2);
+    //console.log(fileName2);
   };
 
   useEffect(() => {
