@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { View } from "@aws-amplify/ui-react";
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
@@ -15,6 +12,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Services from "./components/Services";
+import Footer from "./components/Footer";
 
 function App({ signOut, user }) {
   useEffect(() => {
@@ -50,9 +48,8 @@ function App({ signOut, user }) {
           className="elfsight-app-4495d092-b640-4aa1-88ec-ab5fb0a2961a"
           data-elfsight-app-lazy
         ></div>
-        {/*  <Footer /> */}
+        <Footer />
       </Router>
-      {/* <Button onClick={signOut}>Sign Out</Button> */}
     </View>
   );
 }

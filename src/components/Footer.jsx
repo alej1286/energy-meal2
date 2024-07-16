@@ -17,11 +17,13 @@ import {
   //Loader,
   //Icon,
 } from "@aws-amplify/ui-react";
-import { useFetchServicesApi } from "../api/ServicesApi";
 import { useEffect } from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useFetchNavigationApi } from "../api/NavigationApi";
+import { DataStore } from "aws-amplify/datastore";
+import { Navigation } from "../models";
+import { Service } from "../models";
+import { Hub } from "aws-amplify/utils";
 
 const classNameFunc = ({ isActive }) =>
   isActive
@@ -29,26 +31,44 @@ const classNameFunc = ({ isActive }) =>
     : "w-1/4 h-9 mb-4 no-underline text-gray-300 hover:bg-gray-500 hover:text-white rounded-md px-3 py-2 text-sm font-medium";
 
 const Footer = () => {
-  const {
-    data: dataService,
-    isLoading: isLoadingService,
-    isSuccess: isSuccessService,
-  } = useFetchServicesApi();
-  const {
-    data: dataNavigation,
-    isLoading: isLoadingNavigation,
-    isSuccess: isSuccessNavigation,
-  } = useFetchNavigationApi();
   const [services, setServices] = useState([]);
   const [navigation, setNavigation] = useState([]);
+  let models = null;
+  let models2 = null;
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  function sortNavigationArray(navArray) {
+    // Find the index of the 'Home' element
+    const homeIndex = navArray.findIndex((item) => item.name === "Home");
+    // If 'Home' is not found, return the original array
+    if (homeIndex === -1) {
+      return navArray;
+    }
+    // Remove 'Home' from its current position
+    const homeElement = navArray.splice(homeIndex, 1)[0];
+    // Insert 'Home' at the beginning of the array
+    navArray.unshift(homeElement);
+    return navArray;
+  }
+
+  Hub.listen("datastore", async (hubData) => {
+    const { event, data } = hubData.payload;
+    if (event === "ready") {
+      setRefreshKey((oldKey) => oldKey + 1);
+    }
+  });
+
+  async function fetchData() {
+    models = await DataStore.query(Navigation);
+    setNavigation(sortNavigationArray(models));
+    models2 = await DataStore.query(Service);
+    setServices(models2);
+  }
 
   useEffect(() => {
-    setServices(dataService);
-  }, [dataService]);
-
-  useEffect(() => {
-    setNavigation(dataNavigation);
-  }, [dataNavigation]);
+    fetchData();
+    setRefreshKey((oldKey) => oldKey + 1);
+  }, []);
 
   return (
     <>
@@ -125,7 +145,10 @@ const Footer = () => {
       </div>
     </footer> */}
 
-      <footer className="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
+      <footer
+        key={refreshKey}
+        className="bg-neutral-100 text-center text-neutral-600 dark:bg-neutral-600 dark:text-neutral-200 lg:text-left"
+      >
         <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
           <div className="mr-12 hidden lg:block">
             <span>Get connected with us on social networks:</span>
@@ -220,7 +243,11 @@ const Footer = () => {
                 About Us
               </h6>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, totam? Consequuntur, dolorum dolore, nisi voluptatibus eligendi voluptate sunt deleniti enim dicta ipsum asperiores optio provident vero culpa, eum dolor ex labore perspiciatis corrupti dolores saepe quod hic amet! Quod, repellat!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
+                totam? Consequuntur, dolorum dolore, nisi voluptatibus eligendi
+                voluptate sunt deleniti enim dicta ipsum asperiores optio
+                provident vero culpa, eum dolor ex labore perspiciatis corrupti
+                dolores saepe quod hic amet! Quod, repellat!
               </p>
             </div>
 
