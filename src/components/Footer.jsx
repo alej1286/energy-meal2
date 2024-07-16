@@ -251,7 +251,7 @@ const Footer = () => {
               </p>
             </div>
 
-            <div className="">
+            <div className="hidden sm:block">
               <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
                 Services
               </h6>
@@ -271,7 +271,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="">
+            <div className="hidden sm:block">
               <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
                 Useful links
               </h6>
