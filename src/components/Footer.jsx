@@ -276,7 +276,7 @@ const Footer = () => {
                 Useful links
               </h6>
 
-              <div className="space-y-1 flex justify-center px-2 pb-3 pt-2 flex-col">
+              <div className="space-y-1 flex justify-center items-center md:items-start px-2 pb-3 pt-2 flex-col">
                 {navigation?.map((item) => (
                   <NavLink
                     to={item.href}
