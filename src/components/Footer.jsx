@@ -347,8 +347,8 @@ const Footer = () => {
         <div className="flex justify-around text-center dark:bg-neutral-700 mb-3 ml-3 mr-3">
           <div className="">
             <p className="text-base text-neutral-600">
-              Copyright &copy; {new Date().getFullYear()} | Ailen Hair Stylist .
-              All rights reserved.
+              Copyright &copy; {new Date().getFullYear()} | Energy Meals . All
+              rights reserved.
             </p>
           </div>
           <div className="">

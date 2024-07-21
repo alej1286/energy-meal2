@@ -1,6 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { Disclosure } from "@headlessui/react";
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -10,10 +14,10 @@ import { useRolReposStore } from "./../store/RolRepo";
 import { fetchAuthSession } from "aws-amplify/auth";
 import { DataStore } from "aws-amplify/datastore";
 import { Navigation } from "../models";
-import { Authenticator, useAuthenticator } from "@aws-amplify/ui-react";
-import awsconfig from "../aws-exports";
+import { useAuthenticator } from "@aws-amplify/ui-react";
 import { list } from "aws-amplify/storage";
 import { Hub } from "aws-amplify/utils";
+import awsconfig from "../aws-exports";
 
 const classNameFunc = ({ isActive }) =>
   isActive
@@ -144,16 +148,16 @@ function Navbar(props) {
             <div className="relative flex items-center justify-between h-14">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <DisclosureButton className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
                     <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
                   )}
-                </Disclosure.Button>
+                </DisclosureButton>
               </div>
-              <div className="flex flex-shrink-0 items-center hidden sm:contents">
+              <div className="flex-shrink-0 items-center hidden sm:contents">
                 <img className="h-8 w-auto" src={logo} alt="Energy Meal" />
                 <div
                   className="flex flex-col items-center text-[#00CCFD] font-bold drop-shadow-lg space-y-[-17px] font-SimulateMinds mx-1"
@@ -270,7 +274,7 @@ function Navbar(props) {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <DisclosurePanel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {nav?.map((item) => (
                 <NavLink
@@ -282,7 +286,7 @@ function Navbar(props) {
                 </NavLink>
               ))}
             </div>
-          </Disclosure.Panel>
+          </DisclosurePanel>
         </>
       )}
     </Disclosure>

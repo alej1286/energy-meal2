@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { getProperties } from "aws-amplify/storage";
 import { Helmet } from "react-helmet";
+import BannerSlider from "./BannerSlider";
 
 function Home() {
   return (
@@ -35,9 +35,10 @@ function Home() {
           </div>
         </div>
       </div>
-
+      {/* <Hero17 /> */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+          <BannerSlider />
           <div className="lg:text-center">
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Our Services
