@@ -3,7 +3,7 @@
 import awsconfig from "../aws-exports";
 import { useState, useEffect } from "react";
 import { list } from "aws-amplify/storage";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { useRolReposStore } from "./../store/RolRepo";
 import { fetchAuthSession } from "aws-amplify/auth";
 import { useAuthenticator } from "@aws-amplify/ui-react";

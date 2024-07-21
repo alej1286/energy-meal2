@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { Helmet } from "react-helmet";
+//import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import BannerSlider from "./BannerSlider";
 
 function Home() {

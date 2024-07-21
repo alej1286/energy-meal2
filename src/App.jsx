@@ -13,6 +13,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Services from "./components/Services";
 import Footer from "./components/Footer";
+import { HelmetProvider } from "react-helmet-async";
 
 function App({ signOut, user }) {
   useEffect(() => {
@@ -27,30 +28,32 @@ function App({ signOut, user }) {
   }, []);
 
   return (
-    <View className="App bg-gray-200 min-h-screen">
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route exact path="/" element={<Home />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/services" element={<Services />} />
-          {/* 
+    <HelmetProvider>
+      <View className="App bg-gray-200 min-h-screen">
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route exact path="/" element={<Home />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/services" element={<Services />} />
+            {/* 
           <Route path="/instagram" element={<Instagram />} />
           <Route path="/authe" element={<Authe />} /> */}
-        </Routes>
-        {/* <Carousel businessKey={"ChIJQw1FN----------------"} apiKey={"AIzaSy-----------------------------------------"}/> */}
+          </Routes>
+          {/* <Carousel businessKey={"ChIJQw1FN----------------"} apiKey={"AIzaSy-----------------------------------------"}/> */}
 
-        <div
-          className="elfsight-app-4495d092-b640-4aa1-88ec-ab5fb0a2961a"
-          data-elfsight-app-lazy
-        ></div>
-        <Footer />
-      </Router>
-    </View>
+          <div
+            className="elfsight-app-4495d092-b640-4aa1-88ec-ab5fb0a2961a"
+            data-elfsight-app-lazy
+          ></div>
+          <Footer />
+        </Router>
+      </View>
+    </HelmetProvider>
   );
 }
 

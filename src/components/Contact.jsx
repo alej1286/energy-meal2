@@ -22,7 +22,7 @@ import { generateClient } from "aws-amplify/api";
 //import { InstagramEmbed } from 'react-social-media-embed';
 import { post } from "@aws-amplify/api";
 import { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const IconEmail = () => {
   return (

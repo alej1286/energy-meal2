@@ -1,7 +1,7 @@
 import { Disclosure } from "@headlessui/react";
 //import { ChevronUpIcon } from '@heroicons/react/solid';
 import { Bars3Icon } from "@heroicons/react/24/outline";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 function PrivacyPolicy() {
   return (

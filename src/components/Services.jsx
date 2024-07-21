@@ -17,7 +17,7 @@ import { v4 as uuidv4 } from "uuid";
 import awsconfig from "../aws-exports";
 import { Hub } from "aws-amplify/utils";
 import { remove } from "aws-amplify/storage";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
