@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Helmet } from "react-helmet-async";
 
 const About = () => {
@@ -31,12 +32,22 @@ const About = () => {
             About Us
           </h1>
           <p className="text-lg md:text-xl text-gray-700 mb-8">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse modi
-            impedit laboriosam consectetur unde! Quos.
+            Welcome to Energy Meal—where nutrition meets flavor! At Energy Meal,
+            we believe that choosing a healthy lifestyle should never mean
+            compromising on taste. That's why we dedicate ourselves to providing
+            nutritious and delicious meals crafted from the finest ingredients,
+            ensuring you fuel your body and satisfy your palate.
             <br />
+            But we don’t stop at meals! Our team also offers personalized
+            training programs tailored to fit your unique fitness goals,
+            alongside expert advice to help you navigate your wellness journey
+            with confidence. Whether you're looking to lose weight, build
+            strength, or simply eat healthier, we have the resources and support
+            you need.
             <br />
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae
-            blanditiis neque sed omnis, repellat nostrum!
+            Join us as we embark on this transformative journey. Start your
+            healthy lifestyle with Energy Meal today, and discover how easy and
+            enjoyable eating well can be!
           </p>
         </div>
       </div>

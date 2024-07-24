@@ -21,17 +21,14 @@ function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
             <h1 className="text-base text-indigo-600 font-semibold tracking-wide uppercase mb-5">
-              Welcome to Energy Meals
+              Welcome to Energy Meal: Unlock Your Health & Wellness Potential
             </h1>
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              We Make Lorem ipsum, dolor sit amet consectetur adipisicing
-            </p>
             <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
-              consequatur possimus quam cupiditate quod quo magnam ea minima
-              libero fugiat amet harum, vero, officia facere voluptatem deleniti
-              accusamus dolores maxime repudiandae sit consequuntur ab
-              laboriosam. Itaque quod reprehenderit autem aliquam?
+              Fuel your journey to a healthier lifestyle with our nutritious and
+              delicious meals crafted just for you. Explore our personalized
+              training programs and expert advice designed to empower your
+              wellness goals. Take the first step towards a vibrant, energized
+              life today!
             </p>
           </div>
         </div>

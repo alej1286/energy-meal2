@@ -243,11 +243,9 @@ const Footer = () => {
                 About Us
               </h6>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
-                totam? Consequuntur, dolorum dolore, nisi voluptatibus eligendi
-                voluptate sunt deleniti enim dicta ipsum asperiores optio
-                provident vero culpa, eum dolor ex labore perspiciatis corrupti
-                dolores saepe quod hic amet! Quod, repellat!
+                Join us as we embark on this transformative journey. Start your
+                healthy lifestyle with Energy Meal today, and discover how easy
+                and enjoyable eating well can be!
               </p>
             </div>
 
