@@ -2,6 +2,7 @@
 //import { Helmet } from "react-helmet";
 import { Helmet } from "react-helmet-async";
 import { CarouselDefault } from "./CarouselDefault";
+import PricePlan from "./PricePlan/PricePlan";
 
 function Home() {
   return (
@@ -33,7 +34,7 @@ function Home() {
           </div>
         </div>
       </div>
-      {/* <Hero17 /> */}
+
       <div className="bg-white">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           {/* <BannerSlider /> */}
@@ -131,7 +132,6 @@ function Home() {
           </div>
         </div>
       </div>
-
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
           <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
@@ -226,7 +226,7 @@ function Home() {
           </div>
         </div>
       </div>
-
+      <PricePlan />
       <div className="bg-gray-800">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
