@@ -227,7 +227,7 @@ function Home() {
         </div>
       </div>
       <PricePlan />
-      <div className="bg-gray-800">
+      {/* <div className="bg-gray-800">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
@@ -249,7 +249,7 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -46,7 +46,7 @@ const PlanCard = ({
           )}
         </ul>
 
-        <button
+        {/* <button
           className={`mt-12 w-full py-4 px-8 rounded-lg text-lg whitespace-nowrap focus:outline-none focus:ring-4 focus:ring-indigo-600 focus:ring-opacity-50 transition-all ${
             featured
               ? "bg-indigo-600 hover:bg-indigo-700 text-white hover:scale-105 transform"
@@ -54,7 +54,7 @@ const PlanCard = ({
           }`}
         >
           Select this Plan
-        </button>
+        </button> */}
       </div>
     </div>
   );
